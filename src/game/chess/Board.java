@@ -8,8 +8,12 @@ import java.util.Iterator;
 
 public interface Board {
     Square positionOf(Piece piece);
+
     Piece at(Square square);
+
     void make(Move move);
+
     Iterator<Square> squaresIterator();
+
     Iterator<Piece> piecesIterator();
 }

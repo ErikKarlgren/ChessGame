@@ -6,8 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
- * Class that represents a square in a game board. This class also has static methods
- * to create squares from other squares.
+ * Class that represents a square in a game board.
  */
 public class Square {
     private final int row;
@@ -47,15 +46,6 @@ public class Square {
 
     public int getColumn() {
         return column;
-    }
-
-    @Override
-    public String toString() {
-        var str = "";
-        char colChar = (char) (this.column + 'a' - 1);
-        char rowChar = (char) (this.row + '0');
-        str += colChar + rowChar;
-        return str;
     }
 
     @Override

@@ -41,6 +41,7 @@ class SquaresUtils {
     /**
      * Creates a list of all the available {@link Square}s the given {@link Piece} can move to in
      * the same row.
+     *
      * @param piece {@link Piece} than can move horizontally.
      * @return List of {@link Square}s <code>piece</code> can move to.
      */
@@ -54,6 +55,7 @@ class SquaresUtils {
     /**
      * Creates a list of all the available {@link Square}s the given {@link Piece} can move to in
      * the same column.
+     *
      * @param piece {@link Piece} than can move vertically.
      * @return List of {@link Square}s <code>piece</code> can move to.
      */
@@ -66,6 +68,7 @@ class SquaresUtils {
 
     /**
      * Creates a list of all the available {@link Square}s the given {@link Piece} can move to.
+     *
      * @param piece {@link Piece} than can move diagonally.
      * @return List of {@link Square}s <code>piece</code> can move to.
      */

@@ -14,4 +14,8 @@ public enum PiecesName {
     PiecesName(boolean isWhite) {
         this.isWhite = isWhite;
     }
+
+    public boolean isWhite() {
+        return isWhite;
+    }
 }
