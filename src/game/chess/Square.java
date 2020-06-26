@@ -1,6 +1,5 @@
-package game.chess.movement;
+package game.chess;
 
-import game.chess.ChessBoard;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -9,6 +8,7 @@ import java.util.Objects;
  * Class that represents a square in a game board.
  */
 public class Square {
+    //@Getter
     private final int row;
     private final int column;
 
@@ -40,14 +40,6 @@ public class Square {
         this.column = other.column;
     }
 
-    public int getRow() {
-        return row;
-    }
-
-    public int getColumn() {
-        return column;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (obj == null)
@@ -65,4 +57,5 @@ public class Square {
     public int hashCode() {
         return Objects.hash(row, column);
     }
+
 }

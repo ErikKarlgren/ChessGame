@@ -43,7 +43,9 @@ public abstract class Piece {
             return this.piecesName.isWhite() ? COLOR.WHITE : COLOR.BLACK;
     }
 
-
+    public boolean canBeEatenEnPassant(){
+        return false;
+    }
     /**
      * Specifies the color of a {@link Piece}. It can be either black or white.
      */

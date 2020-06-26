@@ -4,7 +4,6 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import game.chess.chesspieces.*;
 import game.chess.movement.Move;
-import game.chess.movement.Square;
 
 import java.util.*;
 
@@ -130,8 +129,9 @@ public final class ChessBoard implements Board {
     }
 
     @Override
-    public Piece at(Square square) {
-        return squarePieceBiMap.get(square);
+    public Optional<Piece> at(Square square) {
+        var piece = squarePieceBiMap.get(square);
+        return pieces.contains(piece) ? Optional.of(piece) : Optional.empty();
     }
 
     @Override

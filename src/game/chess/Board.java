@@ -2,14 +2,14 @@ package game.chess;
 
 import game.chess.chesspieces.Piece;
 import game.chess.movement.Move;
-import game.chess.movement.Square;
 
 import java.util.Iterator;
+import java.util.Optional;
 
 public interface Board {
     Square positionOf(Piece piece);
 
-    Piece at(Square square);
+    Optional<Piece> at(Square square);
 
     void make(Move move);
 

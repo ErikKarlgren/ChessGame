@@ -1,6 +1,6 @@
 package game.chess.chesspieces;
 
-import game.chess.movement.Square;
+import game.chess.Square;
 
 public final class Empty extends Piece {
 

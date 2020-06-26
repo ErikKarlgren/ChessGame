@@ -13,4 +13,13 @@ public final class Pawn extends Piece {
         super(isWhite ? PiecesName.WhitePawn : PiecesName.BlackPawn);
     }
 
+    @Override
+    public void move() {
+        super.move();
+    }
+
+    @Override
+    public boolean canBeEatenEnPassant() {
+        return super.canBeEatenEnPassant();
+    }
 }
