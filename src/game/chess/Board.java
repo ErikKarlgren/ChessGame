@@ -2,18 +2,19 @@ package game.chess;
 
 import game.chess.chesspieces.Piece;
 import game.chess.movement.Move;
+import lombok.NonNull;
 
 import java.util.Iterator;
 import java.util.Optional;
 
 public interface Board {
-    Square positionOf(Piece piece);
+    @NonNull Square positionOf(@NonNull Piece piece);
 
-    Optional<Piece> at(Square square);
+    @NonNull Optional<Piece> at(@NonNull Square square);
 
-    void make(Move move);
+    void make(@NonNull Move move);
 
-    Iterator<Square> squaresIterator();
+    @NonNull Iterator<Square> squaresIterator();
 
-    Iterator<Piece> piecesIterator();
+    @NonNull Iterator<Piece> piecesIterator();
 }

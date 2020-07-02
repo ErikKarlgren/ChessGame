@@ -1,11 +1,16 @@
 package game.chess.chesspieces;
 
+import lombok.Getter;
+import lombok.experimental.Accessors;
+
 /**
  * Abstract class thar represents a game piece.
  */
+@Accessors(fluent = true)
+@Getter
 public abstract class Piece {
-    protected final PiecesName piecesName;
-    protected boolean hasMoved;
+    private final PiecesName name;
+    private boolean hasMoved;
 
     /**
      * Creates a {@link Piece} given a name. This name should be specified by subclasses, not by
@@ -14,16 +19,8 @@ public abstract class Piece {
      * @param piecesName Name of this {@link Piece}.
      */
     protected Piece(PiecesName piecesName) {
-        this.piecesName = piecesName;
+        this.name = piecesName;
         this.hasMoved = false;
-    }
-
-    /**
-     * @return <code>true</code> if this {@link Piece} has already moved, <code>false</code>
-     * otherwise.
-     */
-    public boolean hasMoved() {
-        return hasMoved;
     }
 
     /**
@@ -37,15 +34,16 @@ public abstract class Piece {
      * @return Color of this piece.
      */
     public final COLOR getColor() {
-        if (this.piecesName == PiecesName.Undefined)
+        if (this.name == PiecesName.Undefined)
             return COLOR.NONE;
         else
-            return this.piecesName.isWhite() ? COLOR.WHITE : COLOR.BLACK;
+            return this.name.isWhite() ? COLOR.WHITE : COLOR.BLACK;
     }
 
-    public boolean canBeEatenEnPassant(){
+    public boolean canBeEatenEnPassant() {
         return false;
     }
+
     /**
      * Specifies the color of a {@link Piece}. It can be either black or white.
      */

@@ -1,6 +1,15 @@
 package game.chess.chesspieces;
 
-public enum PiecesName {
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.Accessors;
+
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
+@Accessors(fluent = true)
+@Getter
+public
+enum PiecesName {
     WhitePawn(true), BlackPawn(false),
     WhiteRook(true), BlackRook(false),
     WhiteKnight(true), BlackKnight(false),
@@ -11,11 +20,4 @@ public enum PiecesName {
 
     final boolean isWhite;
 
-    PiecesName(boolean isWhite) {
-        this.isWhite = isWhite;
-    }
-
-    public boolean isWhite() {
-        return isWhite;
-    }
 }
