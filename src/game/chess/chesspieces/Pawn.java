@@ -12,5 +12,5 @@ public final class Pawn extends Piece {
     public Pawn(boolean isWhite) {
         super(isWhite ? PiecesName.WhitePawn : PiecesName.BlackPawn);
     }
-    
+
 }

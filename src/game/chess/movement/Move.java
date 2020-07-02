@@ -23,7 +23,7 @@ import java.util.List;
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 @Accessors(fluent = true)
 @NonNull
-public abstract class Move {
+public class Move {
     private final Piece piece;
     private final Square destiny;
 
