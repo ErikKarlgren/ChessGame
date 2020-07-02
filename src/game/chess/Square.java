@@ -1,5 +1,7 @@
 package game.chess;
 
+import lombok.Getter;
+import lombok.experimental.Accessors;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -7,8 +9,9 @@ import java.util.Objects;
 /**
  * Class that represents a square in a game board.
  */
+@Accessors(fluent = true)
+@Getter
 public class Square {
-    //@Getter
     private final int row;
     private final int column;
 
