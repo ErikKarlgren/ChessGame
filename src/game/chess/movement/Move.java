@@ -21,7 +21,6 @@ import java.util.List;
  * in order to avoid creating {@link Move} instances that represent illegal moves.
  */
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
-@Accessors(fluent = true)
 @NonNull
 public class Move {
     private final Piece piece;
@@ -47,7 +46,7 @@ public class Move {
         if (pieceOnDestiny.name() != PiecesName.Undefined) {
             pieces.remove(squarePieceBiMap.get(this.destiny));
         }
-        squarePieceBiMap.put(source, new Empty());
-        squarePieceBiMap.put(this.destiny, this.piece);
+        squarePieceBiMap.forcePut(source, new Empty());
+        squarePieceBiMap.forcePut(this.destiny, this.piece);
     }
 }

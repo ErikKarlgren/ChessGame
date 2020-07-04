@@ -53,10 +53,12 @@ public final class ChessBoard implements Board {
     }
 
     private void initSquares() {
-        for (int col = FIRST_COLUMN; col <= LAST_COLUMN; col++) {
-            for (int row = FIRST_ROW; row <= LAST_ROW; row++) {
+        int index = 0;
+        for (int row = FIRST_ROW; row <= LAST_ROW; row++) {
+            for (int col = FIRST_COLUMN; col <= LAST_COLUMN; col++) {
                 var sq = new Square(row, col);
-                squares.add(sq);
+                squares.set(index, sq);
+                index++;
                 squarePieceBiMap.put(sq, new Empty());
             }
         }
@@ -71,7 +73,8 @@ public final class ChessBoard implements Board {
      */
     private void addPiece(Piece piece, int row, int col) {
         pieces.add(piece);
-        squarePieceBiMap.put(at(row, col), piece);
+        squarePieceBiMap.forcePut(
+                at(row, col), piece);
     }
 
     /**
@@ -83,7 +86,9 @@ public final class ChessBoard implements Board {
      */
     private Piece[] createPawns(boolean areWhite) {
         var pawns = new Pawn[8];
-        Arrays.fill(pawns, new Pawn(areWhite));
+        for (int i = 0; i < 8; i++) {
+            pawns[i] = new Pawn(areWhite);
+        }
         return pawns;
     }
 
@@ -109,18 +114,22 @@ public final class ChessBoard implements Board {
     }
 
     private void addArrayOfPieces(Piece[] pieces, int row) {
-        Arrays.stream(pieces).forEach(p -> addPiece(p, row, Arrays.binarySearch(pieces, p)));
+        int col = FIRST_COLUMN;
+        while (col <= LAST_COLUMN) {
+            addPiece(pieces[col - 1], row, col);
+            col++;
+        }
     }
 
     private void initPieces() {
         var whitePawns = createPawns(true);
-        addArrayOfPieces(whitePawns, FIRST_ROW);
+        addArrayOfPieces(whitePawns, FIRST_ROW + 1);
         var blackPawns = createPawns(false);
-        addArrayOfPieces(blackPawns, LAST_ROW);
+        addArrayOfPieces(blackPawns, LAST_ROW - 1);
         var whitePieces = createNotPawns(true);
-        addArrayOfPieces(whitePieces, FIRST_ROW + 1);
+        addArrayOfPieces(whitePieces, FIRST_ROW);
         var blackPieces = createNotPawns(false);
-        addArrayOfPieces(blackPieces, LAST_ROW - 1);
+        addArrayOfPieces(blackPieces, LAST_ROW);
     }
 
     @Override

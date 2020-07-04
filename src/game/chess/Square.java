@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-
 /**
  * Class that represents a square in a game board.
  */
@@ -56,9 +54,15 @@ public class Square {
             return false;
     }
 
+    /**
+     * @return a hash code created by adding 10 times the value stored in
+     * {@link Square#column} and the value stored in {@link Square#row}.
+     * It will always create unique hash codes as long as the number of
+     * rows in a board are 10 or less.
+     */
     @Override
     public int hashCode() {
-        return Objects.hash(row, column);
+        return 10 * column + row;
     }
 
 }

@@ -7,9 +7,22 @@ import lombok.experimental.Accessors;
  * Abstract class thar represents a game piece.
  */
 @Accessors(fluent = true)
-@Getter
 public abstract class Piece {
+    /**
+     * Static attribute to generate unique ids for each created {@link Piece}.
+     * Each {@link Piece}'s id is used as its hash code.
+     */
+    private static int nextID;
+
+    @Getter
     private final PiecesName name;
+
+    /**
+     * Each {@link Piece}'s id is used as its hash code.
+     */
+    private final int id;
+
+    @Getter
     private boolean hasMoved;
 
     /**
@@ -21,6 +34,8 @@ public abstract class Piece {
     protected Piece(PiecesName piecesName) {
         this.name = piecesName;
         this.hasMoved = false;
+        this.id = nextID;
+        nextID++;
     }
 
     /**
@@ -38,6 +53,21 @@ public abstract class Piece {
             return COLOR.NONE;
         else
             return this.name.isWhite() ? COLOR.WHITE : COLOR.BLACK;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean ok = super.equals(obj);
+        if (ok) {
+            var p = (Piece) obj;
+            return this.id == p.id;
+        } else
+            return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.id;
     }
 
     /**
