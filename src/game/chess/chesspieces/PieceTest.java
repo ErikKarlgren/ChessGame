@@ -2,6 +2,8 @@ package game.chess.chesspieces;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PieceTest {
@@ -48,11 +50,6 @@ class PieceTest {
         assertSame(r.getColor(), Piece.COLOR.NONE);
     }
 
-    @Test
-    void canBeEatenEnPassant() {
-        var p = new TestablePiece(PiecesName.WhiteRook);
-        assertFalse(p.canBeEatenEnPassant());
-    }
 
     @Test
     void piecesName() {
@@ -61,4 +58,38 @@ class PieceTest {
         assertNotSame(p.name(), PiecesName.WhiteKing);
     }
 
+    @Test
+    void equalsTest(){
+        var p1 = new Pawn(true);
+        var p2 = new Pawn(true);
+        assertNotEquals(p1, p2);
+        assertNotEquals(p1.hashCode(), p2.hashCode());
+        assertNotEquals(p1, "string test");
+        assertNotEquals(null, p1);
+        assertEquals(p2, p2);
+        assertEquals(p2.hashCode(), p2.hashCode());
+    }
+
+    @Test
+    void equalsTest2(){
+        final int n = 100;
+        var set = new HashSet<Piece>();
+
+        for (int i = 0; i < n; i++) {
+            set.add(new Pawn(true));
+            set.add(new Pawn(false));
+            set.add(new King(true));
+            set.add(new King(false));
+            set.add(new Rook(true));
+            set.add(new Rook(false));
+            set.add(new Knight(true));
+            set.add(new Knight(false));
+            set.add(new Queen(true));
+            set.add(new Queen(false));
+            set.add(new Bishop(true));
+            set.add(new Bishop(false));
+            set.add(new Empty());
+        }
+        assertEquals(n * 13, set.size());
+    }
 }
